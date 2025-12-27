@@ -7,3 +7,8 @@ variable "subnet-name" {
   type    = string
   default = "subnet-2"
 }
+
+variable "azureVnet_name" {
+  type = string
+  default = "my-vnet-1"
+}
