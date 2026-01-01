@@ -1,8 +1,8 @@
-variable "resource_group_name" {
+variable "rg_name" {
   type = string
 }
 
-variable "subnet-name" {
+variable "subnet_name" {
   type = string
 }
 
@@ -18,4 +18,28 @@ variable "rg_location" {
 }
 variable "vnet_dns_servers" {
   type = list(string)
+}
+variable "subnet_addr_prefix" {
+  type = list(string)
+}
+variable "nic_name" {
+  type = string
+}
+
+variable "vm_name" {
+  type = string
+}
+
+variable "vm_size" {
+  type    = string
+  default = "Standard_B1s"
+}
+
+variable "admin_username" {
+  type = string
+}
+
+variable "admin_password" {
+  type      = string
+  sensitive = true
 }

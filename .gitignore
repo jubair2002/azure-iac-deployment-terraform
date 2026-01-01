@@ -6,3 +6,6 @@
 .terraform.tfstate.backup
 *.tfvars
 *.tfvars.json
+*.tfvars
+terraform.tfvars
+*.log
