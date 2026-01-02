@@ -7,6 +7,6 @@ subnet_addr_prefix = ["10.0.1.0/24"]
 subnet_name        = "my-subnet-1"
 nic_name           = "vm-nic-1"
 vm_name            = "my-web-server"
-vm_size            = "Standard_B1ms"
+vm_size            = "Standard_D2as_v5"
 admin_username     = "azureuser"
 admin_password     = "jubair2002abir@123"
