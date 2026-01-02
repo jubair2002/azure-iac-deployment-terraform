@@ -43,3 +43,25 @@ variable "admin_password" {
   type      = string
   sensitive = true
 }
+
+variable "aks_name" {
+  type = string
+}
+variable "aks_dns_prefix" {}
+
+variable "aks_node_count" {
+  default = 1
+}
+
+variable "aks_node_vm_size" {
+  default = "Standard_D2_v2"
+}
+
+variable "tags" {
+  type    = map(string)
+  default = {}
+}
+
+variable "aks_environment" {
+  type = string
+}
