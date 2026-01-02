@@ -65,3 +65,9 @@ variable "tags" {
 variable "aks_environment" {
   type = string
 }
+variable "appgw_subnet_name" {
+  type = string
+}
+variable "subnet_addr_prefix_appgw" {
+  type = list(string)
+}

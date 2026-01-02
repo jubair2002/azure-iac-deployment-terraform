@@ -19,3 +19,7 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+variable "app_gateway_id" {
+  type        = string
+  description = "Application Gateway ID for AGIC"
+}

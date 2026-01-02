@@ -21,5 +21,9 @@ resource "azurerm_kubernetes_cluster" "private-aks" {
     network_plugin = "azure"
   }
 
+  ingress_application_gateway {
+    gateway_id = var.app_gateway_id
+  }
+
   tags = var.tags
 }

@@ -9,8 +9,9 @@ module "private_aks" {
 
   subnet_id = module.subnet.subnet_id
 
-  node_count = var.aks_node_count
-  aks_vm_size    = var.aks_node_vm_size
+  node_count  = var.aks_node_count
+  aks_vm_size = var.aks_node_vm_size
+  app_gateway_id = module.app_gateway.appgw_id
 
   tags = {
     environment = var.aks_environment
