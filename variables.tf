@@ -2,7 +2,7 @@ variable "rg_name" {
   type = string
 }
 
-variable "subnet_name" {
+variable "vm_subnet_name" {
   type = string
 }
 
@@ -19,7 +19,7 @@ variable "rg_location" {
 variable "vnet_dns_servers" {
   type = list(string)
 }
-variable "subnet_addr_prefix" {
+variable "vm_subnet_addr_prefix" {
   type = list(string)
 }
 variable "nic_name" {
@@ -68,6 +68,12 @@ variable "aks_environment" {
 variable "appgw_subnet_name" {
   type = string
 }
-variable "subnet_addr_prefix_appgw" {
+variable "appgw_subnet_addr_prefix" {
   type = list(string)
+}
+variable "aks_subnet_addr_prefix" {
+  type = list(string)
+}
+variable "aks_subnet_name" {
+  type = string
 }

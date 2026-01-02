@@ -3,7 +3,7 @@ module "vm_nic" {
   nic_name    = var.nic_name
   rg_name     = module.resourceGroup.rg_name
   rg_location = module.resourceGroup.rg_location
-  subnet_id   = module.subnet.subnet_id
+  subnet_id   = module.vm_subnet.subnet_id
 }
 
 module "jumpbox_vm" {

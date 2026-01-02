@@ -13,10 +13,26 @@ module "vnet" {
   vnet_dns_servers = var.vnet_dns_servers
 }
 
-module "subnet" {
+module "vm_subnet" {
   source             = "./modules/Subnets"
-  subnet_name        = var.subnet_name
+  subnet_name        = var.vm_subnet_name
   rg_name            = module.resourceGroup.rg_name
   vnet_name          = module.vnet.vnet_name
-  subnet_addr_prefix = var.subnet_addr_prefix
+  subnet_addr_prefix = var.vm_subnet_addr_prefix
+}
+
+module "appgw_subnet" {
+  source             = "./modules/Subnets"
+  subnet_name        = var.appgw_subnet_name
+  rg_name            = module.resourceGroup.rg_name
+  vnet_name          = module.vnet.vnet_name
+  subnet_addr_prefix = var.appgw_subnet_addr_prefix
+}
+
+module "aks_subnet" {
+  source             = "./modules/Subnets"
+  subnet_name        = var.aks_subnet_name
+  rg_name            = module.resourceGroup.rg_name
+  vnet_name          = module.vnet.vnet_name
+  subnet_addr_prefix = var.aks_subnet_addr_prefix
 }
