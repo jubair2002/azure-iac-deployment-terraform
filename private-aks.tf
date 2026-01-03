@@ -19,3 +19,31 @@ module "private_aks" {
     project     = "private-aks"
   }
 }
+module "aks_nsg" {
+  source   = "./modules/NSG"
+  nsg_name = "nsg-aks"
+  rg_location = module.resourceGroup.rg_location
+  rg_name  = module.resourceGroup.rg_name
+
+  security_rules = [
+    {
+      name             = "Allow-AppGW-To-AKS"
+      priority         = 100
+      direction        = "Inbound"
+      access           = "Allow"
+      protocol         = "*"
+      source_port      = "*"
+      destination_port = "*"
+      source           = module.appgw_subnet.subnet_address_prefix
+      destination      = "*"
+    }
+  ]
+
+  nsg_tags = {
+    env = "prod"
+  }
+}
+resource "azurerm_subnet_network_security_group_association" "aks" {
+  subnet_id                 = module.aks_subnet.subnet_id
+  network_security_group_id = module.aks_nsg.nsg_id
+}
