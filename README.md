@@ -12,6 +12,7 @@ A comprehensive Terraform-based Infrastructure as Code (IaC) solution for deploy
 - [Getting Started](#getting-started)
 - [Configuration](#configuration)
 - [Deployment](#deployment)
+- [CI/CD Pipeline Configuration](#cicd-pipeline-configuration)
 - [Security Considerations](#security-considerations)
 
 ## Overview
@@ -225,15 +226,32 @@ The standard deployment process creates all resources in the correct order based
 7. Virtual Machines
 8. AKS Cluster
 
-### Destroying Infrastructure
+## CI/CD Pipeline Configuration
 
-To remove all deployed resources:
+The infrastructure deployment is automated through Azure DevOps CI/CD pipeline.
 
-```bash
-terraform destroy
+### Pipeline Stages
+
+1. **Formatting** - Formats Terraform files
+2. **Validate** - Validates Terraform configuration
+3. **Plan** - Creates execution plan
+4. **Apply** - Deploys infrastructure (requires manual approval via `terraform_apply` environment)
+5. **Destroy** - Removes infrastructure (requires manual approval via `terraform_destroy` environment)
+
+### Manual Approval Environments
+
+Two environments require manual approval:
+- `terraform_apply` - Approve before applying changes
+- `terraform_destroy` - Approve before destroying infrastructure
+
+### Variable Groups
+
+Store sensitive variables (e.g., `admin_password`) in Azure DevOps Variable Groups. Link the Variable Group in pipeline YAML:
+
+```yaml
+variables:
+  - group: terraform-variables
 ```
-
-**Warning**: This action permanently deletes all resources. Ensure you have backups of critical data.
 
 ## Security Considerations
 
